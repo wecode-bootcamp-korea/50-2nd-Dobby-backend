@@ -7,7 +7,12 @@ const getProductsByCategory = async (
 ) => {
   const result = await appDataSource.query(
     `
-  select p.id as id, p.name as name, p.price as price, p.image as image, avg(c.score) as score , count(c.id) as commentCount from products p join comments c on p.id = c.products_id where p.category_id = ? ${searchQuery} group by id , image , name , price ${orderingQuery} 
+  SELECT p.id AS id, p.name AS name, p.price AS price, p.image AS image, AVG(c.score) AS score , count(c.id) AS commentCount
+  FROM products p 
+  JOIN comments c 
+  ON p.id = c.products_id 
+  WHERE p.category_id = ? ${searchQuery} 
+  GROUP BY id , image , name , price ${orderingQuery} 
   `,
     [categoryId]
   );

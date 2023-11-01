@@ -1,17 +1,17 @@
 const categoryDao = require("../models/categoryDao");
 
-const categoryService = async (
+const fetchProductsByCategory = async (
   categoryId,
   sortBy,
   search
 ) => {
   const ordering = async (sortBy) => {
     const sortOptions = {
-      priceAsc: "order by p.price asc , p.id asc",
-      priceDesc: "order by p.price desc , p.id asc",
-      nameAsc: "order by p.name asc , p.id asc",
-      newest: "order by p.created_at desc , p.id asc",
-      default: "order by p.id",
+      priceAsc: "ORDER BY p.price ASC , p.id ASC",
+      priceDesc: "ORDER BY p.price DESC , p.id ASC",
+      nameAsc: "ORDER BY p.name ASC , p.id ASC",
+      newest: "ORDER BY p.created_at DESC , p.id ASC",
+      default: "ORDER BY p.id",
     };
     return sortOptions[sortBy] || sortOptions.default;
   };
@@ -19,7 +19,7 @@ const categoryService = async (
   const orderingQuery = await ordering(sortBy);
 
   const searchQuery = search
-    ? `and (p.name like '%${search}%' or p.content like '%${search}%')`
+    ? `AND (p.name like '%${search}%' OR p.content like '%${search}%')`
     : "";
 
   return await categoryDao.getProductsByCategory(
@@ -30,5 +30,5 @@ const categoryService = async (
 };
 
 module.exports = {
-  categoryService,
+  fetchProductsByCategory,
 };

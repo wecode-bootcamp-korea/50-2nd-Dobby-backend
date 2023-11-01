@@ -6,17 +6,18 @@ const categoryInfo = async (req, res) => {
     let { sortBy, search } = req.query;
 
     if (!categoryId) {
-      res.status(400).json({ message: "KEY ERROR" });
+      const error = new Error("KEY_ERROR");
+      error.statusCode = 400;
+      throw error;
     }
 
-    const getProductsByCategory = await categoryService.categoryService(
+    const getProductsByCategory = await categoryService.fetchProductsByCategory(
       categoryId,
       sortBy,
       search
     );
     res.status(200).json({ message: getProductsByCategory });
   } catch (error) {
-    console.error(error);
     res.status(error.statusCode || 500).json({ message: error.message });
   }
 };
