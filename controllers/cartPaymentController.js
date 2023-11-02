@@ -71,10 +71,9 @@ const cartPaymentDone = async (req, res) => {
     try {
         const userId = req.foundUser;
         // const userId = req.body.id; // 임시로 req.body에서 받아서 사용
-        const { address_id, payment_price }= req.body["data"];
-
+        const { payment_price } = req.body["data"]; // Int로 받는다.
          // request body에 담긴 실제 결제된(50000원 미만일 때의 배송비 포함) 금액, integer로 받는다.
-        if (!payment_price) { // paymentPrice = ""로 오면 DB에서 not null로 인식하기 때문에 0원이라는 integer 값이라도 와야 한다.
+        if (!payment_price) { // paymentPrice = undefined로 오면 DB에서 not null로 인식하기 때문에 0원이라는 integer 값이라도 와야 한다.
             throwErr(400, "NOT PAID OR BAD REQUEST")
         }
 
@@ -82,7 +81,7 @@ const cartPaymentDone = async (req, res) => {
         const productsSalesAdditionField = await productsSalesAddition(userId); // error가 반환되면 catch로 빠진다.
         // cart.status => DONE (cart.status = PENDING => DONE)
         const cartPaymentDoneField = await cartStatusDoneField(userId);         // error가 반환되면 catch로 빠진다.
-
+        // 포인트 차감. credit column을 UNSIGNED로 수정할 필요
         const creditDeducted = await creditDeductionField(userId, payment_price); // credit Deduction error 반환 시 catch로 빠진다.
 
         // 재고 관리 (재고가 음수가 되는 결과가 되면 결제 실패, error handling 따로 구현) // UUID를 통해서 난수 생성하여 uuid apikey 구현 가능(추후)
@@ -102,7 +101,7 @@ const paymentAddressAddition = async (req, res) => {
         // payment/address/done으로 request.body에 content, phonenumber, name이 담긴 POST REQUEST가 오지 않으면
         const { content, phonenumber, name } = req.body;
         console.log(content, phonenumber, name)
-        if (!content || !phonenumber || !name) {
+        if (!content && !phonenumber && !name) {
             throwErr(404, "DOBBYBOX SUBSCRIPTION NOT FOUND");
         }
         const genAddressField = await addressGenerationField(userId, content, phonenumber, name); // error가 반환되면 catch로 빠진다.
