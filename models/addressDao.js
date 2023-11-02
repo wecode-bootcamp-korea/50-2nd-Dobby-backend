@@ -4,14 +4,15 @@ const findAddress = async (userId) => {
         return await appDataSource.query(
             `
                     SELECT 
-                    address.id, 
-                    address.users_id, 
-                    address.phonenumber, 
-                    address.name 
+                    id, 
+                    users_id, 
+                    phonenumber,
+                    content,
+                    name 
                     FROM 
                     address 
                     WHERE 
-                    address.users_id = '${userId}'
+                    users_id = '${userId}'
                     `
         );
     } catch (e) {
@@ -40,5 +41,6 @@ const generateAddress = async (userId, content, phonenumber, name) => {
         console.error(e);
     }
 }
+
 
 module.exports = { findAddress, generateAddress }

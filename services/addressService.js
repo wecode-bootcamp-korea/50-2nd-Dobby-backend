@@ -14,6 +14,7 @@ const  addressField = async (userId) => {
 }
 
 
+
 const addressGenerationField = async (userId, content, phonenumber, name) => {
     try {
             return await generateAddress(userId, content, phonenumber, name); // error가 발생하면 catch로 빠진다.
