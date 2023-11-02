@@ -2,7 +2,7 @@
 // RESPONSE CODE 204로 응답한다.
 
 const { throwErr } = require("../entity/utils")
-const { addProductSales } = require("../models/productDao");
+const { addProductSales } = require("../models/productsDao");
 
 const productsSalesAddition = async (userId) => {
     try {
@@ -11,5 +11,6 @@ const productsSalesAddition = async (userId) => {
         console.error(e);
     }
 }
+
 
 module.exports = { productsSalesAddition }

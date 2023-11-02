@@ -25,4 +25,5 @@ const addProductSales = async (userId) => {  // products table에 cart table을 
     }
 }
 
+
 module.exports = { addProductSales }
