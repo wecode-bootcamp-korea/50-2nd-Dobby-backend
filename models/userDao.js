@@ -56,5 +56,6 @@ const deductCredit = async (userId, paymentPrice) => { // 기존 credit에서 �
         }
 }
 
+
 module.exports = { findUser, findCredit, deductCredit }
 
