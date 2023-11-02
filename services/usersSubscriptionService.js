@@ -17,14 +17,15 @@ const usersSubscriptionAdditionField = async (userId, dobbyBoxId) => {
 // 구독 중복 체크
 const duplicationVerifiedSubscription = async (userId, dobbyBoxId) => {
     try {
-            const duplicatedSubscriptionId = await checkDuplicatedUsersSubscription(userId, dobbyBoxId); // 다른 창에서 같은 구독을 이미 시작했을 수도 있으므로 error handling
-            if (duplicatedSubscriptionId.length) {
-                throwErr(409, "ALREADY SUBSCRIBED DOBBYBOX");
-            }
+        const duplicatedSubscriptionId = await checkDuplicatedUsersSubscription(userId, dobbyBoxId); // 다른 창에서 같은 구독을 이미 시작했을 수도 있으므로 error handling
+        if (duplicatedSubscriptionId.length) {
+            throwErr(409, "ALREADY SUBSCRIBED DOBBYBOX");
+        }
     } catch (e) {
         console.error(e);
     }
 }
+
 
 
 module.exports = { usersSubscriptionAdditionField, duplicationVerifiedSubscription }
