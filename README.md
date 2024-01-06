@@ -1,15 +1,17 @@
 # DIY + Hobby
 
 ## 나의 취미를 내 손으로 직접 다채롭게 구성해 보세요 🎈
+![Dobby Dev UIUX Design](https://github.com/wecode-bootcamp-korea/50-2nd-Dobby-backend/assets/78453933/064d2a8f-0b0f-4156-ba7f-42ed2f8de0e7)
 
-유진서, 조민수, 최현수, 김영범
+- Back-End Developer : 유진서, 조민수, 최현수, 김영범
+- Template Designer : 김성호(Front-End)
 
 
 # Proejct - Dobby팀 
 ## 소개
 <p style="color: dodgerblue">위코드 50기 B팀의 2nd Project입니다.</p>
 
-백엔드 서버 코드를 저장했습니다. Frontend 소스 코드는 [여기](https://github.com/wecode-bootcamp-korea/50-2nd-Dobby-frontend)에 있습니다.
+백엔드 서버 코드를 저장했습니다. Back-End 소스 코드는 [여기](https://github.com/wecode-bootcamp-korea/50-2nd-Dobby-frontend)에 있습니다.
 
 ## 저장소 구조
 
