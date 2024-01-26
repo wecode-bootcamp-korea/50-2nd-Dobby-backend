@@ -6,7 +6,6 @@
 ![Dobby Dev Web Design](https://github.com/wecode-bootcamp-korea/50-2nd-Dobby-backend/assets/78453933/07a25ed9-121c-4ff2-9a09-c8c9d92c5ded)
 
 - Back-End Developer : 유진서, 조민수, 최현수, 김영범
-- Template Designer : 김성호(Front-End)
 
 
 # Proejct - Dobby팀 
